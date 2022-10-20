@@ -49,6 +49,8 @@ public class MNG_ANIPANGGAME : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        JsManager.onGameLoaded();
+        JsManager.gameStart();
     }
 
     // Update is called once per frame
@@ -92,6 +94,7 @@ public class MNG_ANIPANGGAME : MonoBehaviour
                             }
                         }
                         gameOverUI.SetActive(true);
+                        JsManager.gameEnd(m_score.ToString());
                         bGameOver = false;
                     }
 
@@ -780,6 +783,7 @@ public class MNG_ANIPANGGAME : MonoBehaviour
             }
         }
         m_score = 0;
+        JsManager.gameStart();
     }
     public void ReturnMain()
     {

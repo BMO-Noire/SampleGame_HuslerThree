@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Runtime.InteropServices;
 
 public class MNG_HAMMERGAME : MonoBehaviour
 {
@@ -63,6 +64,8 @@ public class MNG_HAMMERGAME : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        JsManager.onGameLoaded();
+        //JsManager.Hello();
         Initialize();
     }
 
@@ -85,6 +88,7 @@ public class MNG_HAMMERGAME : MonoBehaviour
                         gameStart = false;
                         gameOverScore.text = score.ToString() + " Score";
                         gameOverCombo.text = combo.ToString() + " Combo";
+                        JsManager.gameEnd(score.ToString());
                     }
 
                 }
@@ -175,7 +179,7 @@ public class MNG_HAMMERGAME : MonoBehaviour
 
     public void Initialize()
     {
-
+        JsManager.gameStart();
         score = 0;
         combo = 0;
         IntervalRangeMin = intervalRangeMin;

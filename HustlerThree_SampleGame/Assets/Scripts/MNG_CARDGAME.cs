@@ -52,10 +52,12 @@ public class MNG_CARDGAME : MonoBehaviour
     }
     void Start()
     {
+        JsManager.onGameLoaded();
         Card4Setting();
         Card6Setting();
         Card8Setting();
         Card12Setting();
+        JsManager.gameStart();
     }
 
     void Update()
@@ -76,6 +78,7 @@ public class MNG_CARDGAME : MonoBehaviour
                     if (bGameOver)
                     {
                         gameOverUI.SetActive(true);
+                        JsManager.gameEnd(score.ToString());
                         bGameOver = false;
                     }
                 }
@@ -392,6 +395,7 @@ public class MNG_CARDGAME : MonoBehaviour
         ClickCard.cnt = 0;
         gameScore.text = "0";
         gameCombo.text = "0";
+        JsManager.gameStart();
     }
 
     public void ReturnMain()

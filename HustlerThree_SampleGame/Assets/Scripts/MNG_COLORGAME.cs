@@ -40,9 +40,11 @@ public class MNG_COLORGAME : MonoBehaviour
     }
     void Start()
     {
+        JsManager.onGameLoaded();
         CreateColor();
         scoreText.text = totalScore.ToString() + " Score";
         comboText.text = combo.ToString() + " Combo";
+        JsManager.gameStart();
     }
 
     void Update()
@@ -59,6 +61,7 @@ public class MNG_COLORGAME : MonoBehaviour
                     if (bGameOver)
                     {
                         gameOverUI.SetActive(true);
+                        JsManager.gameEnd(score.ToString());
                         bGameOver = false;
                     }
 
@@ -239,6 +242,7 @@ public class MNG_COLORGAME : MonoBehaviour
         gameStart = true;
         scoreText.text = totalScore.ToString() + " Score";
         comboText.text = combo.ToString() + " Combo";
+        JsManager.gameStart();
     }
 
     public void ReturnMain()
